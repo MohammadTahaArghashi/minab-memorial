@@ -1,1 +1,1390 @@
 # minab-memorial
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a1220">
+<title>یادنامه میناب | شجره طیبه</title>
+
+<style>
+:root {
+  --night: #0a1220;
+  --navy: #101e32;
+  --panel: #14243a;
+  --gold: #d9b779;
+  --gold-light: #f0d9a7;
+  --white: #f5f1e8;
+  --muted: #aab5c4;
+  --line: rgba(217,183,121,.22);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--white);
+  font-family: Tahoma, "Segoe UI", sans-serif;
+  line-height: 2;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button, input, textarea { font: inherit; }
+
+button, a { -webkit-tap-highlight-color: transparent; }
+
+::selection {
+  background: var(--gold);
+  color: var(--night);
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--gold-light);
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 27px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.section-head {
+  max-width: 650px;
+  margin-bottom: 38px;
+}
+
+.section-head h2 {
+  font-size: clamp(25px, 4vw, 39px);
+  line-height: 1.8;
+  margin: 12px 0;
+  font-weight: 700;
+}
+
+.section-head p,
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Header */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(10,18,32,.91);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  backdrop-filter: blur(16px);
+}
+
+.nav {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+}
+
+.brand-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.brand-subtitle {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 1px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 12px;
+  color: #d1d7e0;
+}
+
+.nav-links a {
+  transition: color .2s;
+}
+
+.nav-links a:hover { color: var(--gold-light); }
+
+.nav-cta {
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--gold-light) !important;
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--white);
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 15% 45%,
+      rgba(191,146,80,.11), transparent 37%),
+    linear-gradient(115deg, #0b1423 0%, #102039 60%, #0a1220 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 470px;
+  height: 470px;
+  border: 1px solid rgba(217,183,121,.13);
+  border-radius: 50%;
+  left: -160px;
+  top: 70px;
+  box-shadow:
+    0 0 0 35px rgba(217,183,121,.018),
+    0 0 0 75px rgba(217,183,121,.018);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 65px;
+  padding-block: 76px;
+}
+
+.hero-copy h1 {
+  font-size: clamp(35px, 5.5vw, 61px);
+  line-height: 1.65;
+  margin: 23px 0;
+  font-weight: 800;
+  letter-spacing: -1.6px;
+}
+
+.hero-copy h1 span { color: var(--gold-light); }
+
+.hero-copy > p {
+  color: #c0cad6;
+  font-size: 15px;
+  line-height: 2.5;
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 47px;
+  padding: 10px 22px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background: var(--gold);
+  color: #182031;
+  border: 1px solid var(--gold);
+  font-weight: bold;
+}
+
+.btn-outline {
+  border: 1px solid rgba(255,255,255,.22);
+  color: var(--white);
+  background: transparent;
+}
+
+.hero-note {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #aab6c7;
+  font-size: 11px;
+}
+
+.hero-note i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Custom memorial artwork */
+
+.artwork {
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+}
+
+.artwork-frame {
+  position: absolute;
+  inset: 9% 7%;
+  border: 1px solid rgba(217,183,121,.45);
+}
+
+.artwork-frame::before,
+.artwork-frame::after {
+  content: "";
+  position: absolute;
+  width: 33px;
+  height: 33px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+
+.artwork-frame::before {
+  top: -1px;
+  right: -1px;
+  border-width: 1px 1px 0 0;
+}
+
+.artwork-frame::after {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 1px 1px;
+}
+
+.art-circle {
+  width: 68%;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 12%;
+  border-radius: 50%;
+  border: 1px solid rgba(217,183,121,.27);
+  background: radial-gradient(circle,
+    rgba(217,183,121,.13), rgba(217,183,121,.01) 68%);
+}
+
+.art-circle::before {
+  content: "";
+  position: absolute;
+  inset: 13%;
+  border: 1px solid rgba(217,183,121,.2);
+  border-radius: 50%;
+}
+
+.art-symbol {
+  position: relative;
+  z-index: 2;
+  width: 76%;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,.2));
+}
+
+.art-caption {
+  position: absolute;
+  z-index: 3;
+  bottom: 15%;
+  background: #101e32;
+  border: 1px solid var(--line);
+  padding: 14px 26px;
+  text-align: center;
+  min-width: 68%;
+}
+
+.art-caption strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 15px;
+}
+
+.art-caption span {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* Facts */
+
+.facts {
+  background: #0d1828;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.fact {
+  padding: 29px 26px;
+  border-left: 1px solid rgba(255,255,255,.08);
+}
+
+.fact:last-child { border-left: 0; }
+
+.fact small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.fact strong {
+  display: block;
+  font-size: 17px;
+  margin-top: 9px;
+  color: var(--gold-light);
+}
+
+/* Story */
+
+.story-grid {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.story-aside {
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, #13243b, #0e192a);
+  padding: 30px;
+  position: sticky;
+  top: 108px;
+}
+
+.story-aside .big-date {
+  font-size: 45px;
+  line-height: 1.5;
+  font-weight: bold;
+  color: var(--gold-light);
+}
+
+.story-aside p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.story-text h3 {
+  font-size: 23px;
+  margin-top: 0;
+  line-height: 1.9;
+}
+
+.story-text p {
+  color: #bdc7d4;
+  font-size: 14px;
+  line-height: 2.7;
+  margin: 0 0 23px;
+}
+
+.notice {
+  border-right: 2px solid var(--gold);
+  padding: 13px 18px;
+  background: rgba(217,183,121,.055);
+  color: #c4ceda;
+  font-size: 12px;
+  line-height: 2.4;
+}
+
+/* Timeline */
+
+.timeline-section {
+  background:
+    linear-gradient(rgba(13,24,40,.96), rgba(13,24,40,.96)),
+    repeating-linear-gradient(0deg,
+      transparent 0 39px, rgba(255,255,255,.05) 40px);
+  border-block: 1px solid rgba(255,255,255,.055);
+}
+
+.timeline {
+  position: relative;
+  max-width: 780px;
+  margin-right: 8px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  right: 7px;
+  top: 9px;
+  bottom: 15px;
+  width: 1px;
+  background: linear-gradient(var(--gold), rgba(217,183,121,.05));
+}
+
+.time-item {
+  position: relative;
+  padding: 0 34px 36px 0;
+}
+
+.time-item:last-child { padding-bottom: 0; }
+
+.time-item::before {
+  content: "";
+  position: absolute;
+  right: 2px;
+  top: 9px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--navy);
+  box-shadow: 0 0 0 5px rgba(217,183,121,.07);
+}
+
+.time-item small {
+  color: var(--gold);
+  font-size: 11px;
+}
+
+.time-item h3 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.time-item p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2.4;
+  margin: 0;
+}
+
+/* Tribute */
+
+.tribute-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.tribute-card {
+  min-height: 205px;
+  border: 1px solid rgba(255,255,255,.09);
+  background: linear-gradient(145deg, #14243a, #101c2d);
+  padding: 27px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+
+.tribute-card:hover {
+  border-color: rgba(217,183,121,.5);
+  transform: translateY(-4px);
+}
+
+.card-num {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.tribute-card h3 {
+  font-size: 17px;
+  margin: 19px 0 10px;
+}
+
+.tribute-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2.3;
+  margin: 0;
+}
+
+.tribute-card::after {
+  content: "✳";
+  position: absolute;
+  left: 15px;
+  bottom: -35px;
+  font-size: 105px;
+  line-height: 1;
+  color: rgba(217,183,121,.055);
+}
+
+/* Write a tribute */
+
+.write-section {
+  background: #0d1828;
+  border-block: 1px solid rgba(255,255,255,.055);
+}
+
+.write-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.write-form {
+  border: 1px solid var(--line);
+  background: #101e32;
+  padding: 26px;
+}
+
+.write-form label {
+  display: block;
+  color: #dce2e9;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.write-form textarea {
+  display: block;
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+  background: #0b1525;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,.14);
+  padding: 14px;
+  border-radius: 3px;
+  outline: none;
+  font-size: 13px;
+  line-height: 2.2;
+}
+
+.write-form textarea:focus {
+  border-color: var(--gold);
+}
+
+.write-form button { margin-top: 14px; }
+
+.form-note {
+  color: #8996a8;
+  font-size: 10px;
+  margin-top: 12px;
+}
+
+.messages {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.message {
+  background: rgba(217,183,121,.045);
+  border-right: 2px solid var(--gold);
+  padding: 14px 17px;
+  color: #d5dbe3;
+  font-size: 13px;
+  line-height: 2.3;
+  overflow-wrap: anywhere;
+}
+
+.empty-message {
+  color: var(--muted);
+  border: 1px dashed rgba(255,255,255,.15);
+  padding: 22px;
+  font-size: 12px;
+}
+
+/* Sources */
+
+.sources {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+}
+
+.source-link {
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 18px 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background: rgba(255,255,255,.02);
+  transition: border-color .2s;
+}
+
+.source-link:hover { border-color: var(--gold); }
+
+.source-link strong {
+  display: block;
+  font-size: 12px;
+}
+
+.source-link small {
+  color: var(--muted);
+  font-size: 10px;
+  display: block;
+  margin-top: 6px;
+}
+
+.source-arrow { color: var(--gold); }
+
+.sources-note {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 2.4;
+}
+
+/* Footer */
+
+footer {
+  padding: 36px 0 23px;
+  border-top: 1px solid var(--line);
+  background: #080f1b;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-title {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.footer-note {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  margin-top: 27px;
+  padding-top: 15px;
+}
+
+.copyright {
+  font-size: 10px;
+  color: #718096;
+}
+
+.mta-credit {
+  direction: rtl;
+  text-align: right;
+  font-size: 10px;
+  color: #8490a1;
+  opacity: .8;
+}
+
+/* Motion */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(17px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .nav { min-height: 70px; }
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 69px;
+    right: 0;
+    left: 0;
+    padding: 20px 5%;
+    background: #0b1525;
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 13px;
+  }
+
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 5px 0; }
+  .nav-cta { text-align: center; }
+
+  .hero { min-height: unset; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-block: 65px 55px;
+  }
+
+  .hero-copy { order: 1; }
+  .artwork {
+    order: 0;
+    width: min(310px, 85%);
+  }
+
+  .hero-copy h1 { font-size: clamp(34px, 8vw, 48px); }
+  .hero-copy > p { font-size: 13px; }
+
+  .section { padding: 70px 0; }
+  .facts-grid { grid-template-columns: 1fr; }
+
+  .fact {
+    border-left: 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 19px 5px;
+  }
+
+  .fact:last-child { border-bottom: 0; }
+
+  .story-grid, .write-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .story-aside { position: static; }
+  .tribute-grid { grid-template-columns: 1fr; }
+  .sources { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 430px) {
+  .container { width: 91%; }
+  .brand-title { font-size: 12px; }
+  .brand-mark { width: 40px; height: 40px; }
+  .hero-actions .btn { width: 100%; }
+  .write-form { padding: 18px; }
+  .footer-top, .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a class="brand" href="#home" aria-label="صفحه اصلی یادنامه میناب">
+      <!-- نشان اختصاصی کتاب و گل -->
+      <svg class="brand-mark" viewBox="0 0 64 64"
+           fill="none" xmlns="http://www.w3.org/2000/svg"
+           aria-hidden="true">
+        <circle cx="32" cy="32" r="29"
+                stroke="#D9B779" stroke-opacity=".65"/>
+        <path d="M13 23 Q23 18 32 27 V47 Q22 39 13 43 Z"
+              stroke="#E9D3A3" stroke-width="1.7"
+              stroke-linejoin="round"/>
+        <path d="M51 23 Q41 18 32 27 V47 Q42 39 51 43 Z"
+              stroke="#E9D3A3" stroke-width="1.7"
+              stroke-linejoin="round"/>
+        <path d="M32 27 V47" stroke="#D9B779" stroke-width="1.5"/>
+        <path d="M32 24 C26 20 27 13 32 11
+                 C37 13 38 20 32 24Z"
+              stroke="#D9B779" stroke-width="1.5"/>
+        <path d="M30 22 Q22 19 24 14 Q30 15 30 22Z"
+              stroke="#D9B779" stroke-width="1.3"/>
+        <path d="M34 22 Q42 19 40 14 Q34 15 34 22Z"
+              stroke="#D9B779" stroke-width="1.3"/>
+      </svg>
+
+      <span>
+        <span class="brand-title">یادنامهٔ میناب</span>
+        <span class="brand-subtitle">مدرسهٔ شجرهٔ طیبه</span>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+            aria-expanded="false" aria-controls="navLinks">
+      منو
+    </button>
+
+    <nav class="nav-links" id="navLinks" aria-label="منوی اصلی">
+      <a href="#story">روایت واقعه</a>
+      <a href="#timeline">خط زمانی</a>
+      <a href="#memorial">یادبود</a>
+      <a href="#sources">منابع</a>
+      <a href="#write" class="nav-cta">نوشتن یادبود</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+        <div class="eyebrow">یادنامه‌ای برای دانش‌آموزان میناب</div>
+
+        <h1>
+          بعضی نام‌ها<br>
+          <span>فراموش نمی‌شوند.</span>
+        </h1>
+
+        <p>
+          برای کودکانی که دفترهایشان نیمه‌تمام ماند؛
+          برای آرزوهایی که باید فرصت شکفتن می‌داشتند؛
+          و برای یادآوری ارزش زندگی، آرامش و حق آموزش.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#story">
+            خواندن روایت واقعه
+          </a>
+          <a class="btn btn-outline" href="#memorial">
+            ورود به بخش یادبود
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <i></i>
+          <span>به یاد دانش‌آموزان مدرسهٔ شجرهٔ طیبه در میناب</span>
+        </div>
+      </div>
+
+      <div class="artwork" aria-label="تصویر نمادین کتاب و گل">
+        <div class="artwork-frame"></div>
+        <div class="art-circle"></div>
+
+        <svg class="art-symbol" viewBox="0 0 340 350"
+             fill="none" xmlns="http://www.w3.org/2000/svg"
+             aria-hidden="true">
+
+          <path d="M30 255 Q90 225 163 262 V310
+                   Q90 277 30 302 Z"
+                fill="#172B43" stroke="#D9B779"
+                stroke-width="1.6"/>
+
+          <path d="M310 255 Q250 225 177 262 V310
+                   Q250 277 310 302 Z"
+                fill="#172B43" stroke="#D9B779"
+                stroke-width="1.6"/>
+
+          <path d="M163 262 Q170 269 177 262 V310
+                   Q170 315 163 310 Z"
+                fill="#243650" stroke="#D9B779"
+                stroke-width="1"/>
+
+          <path d="M52 269 Q103 258 144 278"
+                stroke="#D9B779" stroke-opacity=".5"/>
+          <path d="M288 269 Q237 258 196 278"
+                stroke="#D9B779" stroke-opacity=".5"/>
+
+          <path d="M170 251 C152 220 156 185 170 155
+                   C184 185 188 220 170 251Z"
+                fill="#1F463D" stroke="#8DB4A0"
+                stroke-width="1.5"/>
+
+          <path d="M170 236 Q130 218 121 180
+                   Q159 185 170 236Z"
+                fill="#234D40" stroke="#8DB4A0"
+                stroke-width="1.5"/>
+
+          <path d="M170 222 Q208 203 219 165
+                   Q181 170 170 222Z"
+                fill="#234D40" stroke="#8DB4A0"
+                stroke-width="1.5"/>
+
+          <path d="M170 193 L170 249" stroke="#C9D7B7"
+                stroke-opacity=".7" stroke-width="1.3"/>
+
+          <path d="M170 145
+                   C137 122 146 87 170 77
+                   C194 87 203 122 170 145Z"
+                fill="#B64D4B" stroke="#E8A29A"
+                stroke-width="1.5"/>
+
+          <path d="M170 146
+                   C146 137 119 152 124 171
+                   C142 185 163 166 170 146Z"
+                fill="#B64D4B" stroke="#E8A29A"
+                stroke-width="1.5"/>
+
+          <path d="M170 146
+                   C194 137 221 152 216 171
+                   C198 185 177 166 170 146Z"
+                fill="#B64D4B" stroke="#E8A29A"
+                stroke-width="1.5"/>
+
+          <path d="M170 146
+                   C154 118 164 101 170 96
+                   C176 101 186 118 170 146Z"
+                fill="#D97569" stroke="#F0C0A6"
+                stroke-width="1.2"/>
+
+          <circle cx="170" cy="151" r="8"
+                  fill="#D9B779"/>
+
+          <path d="M170 77 V53 M170 64
+                   Q151 55 153 42
+                   Q166 43 170 64Z"
+                stroke="#D9B779" stroke-width="1.5"
+                stroke-linecap="round"/>
+
+          <path d="M185 57 Q199 42 192 29
+                   Q178 39 185 57Z"
+                fill="#234D40" stroke="#8DB4A0"
+                stroke-width="1.5"/>
+
+          <circle cx="72" cy="100" r="2" fill="#E8D4A9"/>
+          <circle cx="260" cy="86" r="2" fill="#E8D4A9"/>
+          <circle cx="244" cy="210" r="1.8" fill="#E8D4A9"/>
+          <circle cx="88" cy="193" r="1.8" fill="#E8D4A9"/>
+
+          <path d="M61 130 L67 130 M64 127 L64 133"
+                stroke="#D9B779" stroke-width="1.2"/>
+          <path d="M260 155 L266 155 M263 152 L263 158"
+                stroke="#D9B779" stroke-width="1.2"/>
+        </svg>
+
+        <div class="art-caption">
+          <strong>شجرهٔ طیبه</strong>
+          <span>یادشان، بخشی از حافظهٔ ماست</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FACTS -->
+  <section class="facts" aria-label="اطلاعات اصلی">
+    <div class="container facts-grid">
+
+      <div class="fact">
+        <small>تاریخ واقعه</small>
+        <strong>۹ اسفند ۱۴۰۴ · ۲۸ فوریهٔ ۲۰۲۶</strong>
+      </div>
+
+      <div class="fact">
+        <small>نام مدرسه</small>
+        <strong>شجرهٔ طیبه</strong>
+      </div>
+
+      <div class="fact">
+        <small>محل واقعه</small>
+        <strong>میناب · استان هرمزگان</strong>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" id="story">
+    <div class="container story-grid">
+
+      <aside class="story-aside reveal">
+        <div class="eyebrow">روایت یک روز تلخ</div>
+        <div class="big-date">۲۸ فوریه</div>
+        <p>
+          روزی که خبر حمله به مدرسهٔ شجرهٔ طیبه،
+          نام میناب را در گزارش‌های جهان مطرح کرد.
+        </p>
+      </aside>
+
+      <div class="story-text reveal">
+        <div class="section-head">
+          <div class="eyebrow">آنچه می‌دانیم</div>
+          <h2>روایت مدرسهٔ میناب</h2>
+        </div>
+
+        <p>
+          در ۲۸ فوریهٔ ۲۰۲۶، مدرسهٔ ابتدایی شجرهٔ طیبه
+          در شهر میناب، در جریان حملات آغاز جنگ آمریکا و
+          اسرائیل علیه ایران، مورد حمله قرار گرفت.
+          گزارش‌های منتشرشده از کشته‌شدن شمار زیادی از
+          دانش‌آموزان و کارکنان مدرسه خبر داده‌اند.
+        </p>
+
+        <p>
+          این رویداد تنها یک خبر یا عدد نیست؛ یادآور اهمیت
+          حفاظت از کودکان، مدارس و فضاهای آموزشی در
+          زمان درگیری‌های مسلحانه است. پشت هر نام،
+          خانواده‌ای و آینده‌ای وجود دارد که شایستهٔ
+          احترام و یادآوری است.
+        </p>
+
+        <div class="notice">
+          <strong>دربارهٔ آمار:</strong>
+          گزارش‌ها دربارهٔ شمار نهایی جان‌باختگان یکسان نیستند.
+          برای حفظ دقت، در این نسخه عدد قطعی و بدون توضیح
+          به‌عنوان آمار نهایی درج نشده است. منابع و گزارش‌های
+          مرتبط در پایین همین صفحه قرار دارند.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section timeline-section" id="timeline">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div class="eyebrow">خط زمانی</div>
+        <h2>از واقعه تا یادآوری</h2>
+        <p>
+          مروری کوتاه بر رخدادهای مرتبط؛ این بخش با انتشار
+          اسناد معتبرتر قابل تکمیل است.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <article class="time-item reveal">
+          <small>۲۸ فوریهٔ ۲۰۲۶</small>
+          <h3>حمله به مدرسه</h3>
+          <p>
+            مدرسهٔ شجرهٔ طیبه در میناب هدف حمله قرار گرفت.
+            گزارش‌ها از تلفات سنگین در میان دانش‌آموزان
+            و کارکنان خبر دادند.
+          </p>
+        </article>
+
+        <article class="time-item reveal">
+          <small>روزها و هفته‌های پس از واقعه</small>
+          <h3>پیگیری و بررسی گزارش‌ها</h3>
+          <p>
+            رسانه‌ها و سازمان‌های حقوق بشری دربارهٔ ابعاد
+            واقعه، تلفات غیرنظامیان و ضرورت بررسی مسئولیت‌ها
+            گزارش منتشر کردند.
+          </p>
+        </article>
+
+        <article class="time-item reveal">
+          <small>امروز</small>
+          <h3>حفظ یاد و مستندات</h3>
+          <p>
+            ثبت دقیق اطلاعات، ارجاع به منابع معتبر و
+            احترام به خانواده‌ها، بخش مهمی از نگهداری
+            حافظهٔ این واقعه است.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMORIAL -->
+  <section class="section" id="memorial">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div class="eyebrow">یادبود</div>
+        <h2>برای آینده‌ای که باید روشن بماند</h2>
+        <p>
+          یادبود، فقط بازگشت به گذشته نیست؛ دعوتی است برای
+          پاسداشت زندگی، دانش و امنیت کودکان.
+        </p>
+      </div>
+
+      <div class="tribute-grid">
+
+        <article class="tribute-card reveal">
+          <span class="card-num">۰۱ / دانش</span>
+          <h3>حق آموختن</h3>
+          <p>
+            هر کودک باید فرصت داشته باشد یاد بگیرد،
+            رؤیا بسازد و آینده‌اش را شکل دهد.
+          </p>
+        </article>
+
+        <article class="tribute-card reveal">
+          <span class="card-num">۰۲ / یاد</span>
+          <h3>نام‌هایی برای به‌خاطر سپردن</h3>
+          <p>
+            یادآوری مسئولانه، با اطلاعات مستند و احترام
+            به شأن و حریم خصوصی خانواده‌ها همراه است.
+          </p>
+        </article>
+
+        <article class="tribute-card reveal">
+          <span class="card-num">۰۳ / امید</span>
+          <h3>مدرسه؛ خانهٔ آینده</h3>
+          <p>
+            هیچ کودکی نباید از حق آموختن و زندگی در
+            محیطی امن محروم شود.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WRITE -->
+  <section class="section write-section" id="write">
+    <div class="container write-grid">
+
+      <div class="reveal">
+        <div class="eyebrow">یک جمله برای یادبود</div>
+        <h2 style="font-size:30px;line-height:1.9;margin:15px 0">
+          چیزی برای آینده بنویس.
+        </h2>
+        <p class="muted">
+          یک جمله دربارهٔ امید، صلح، دانش یا احترامی که
+          شایستهٔ همهٔ کودکان است.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <form class="write-form" id="tributeForm">
+          <label for="tributeText">پیام یادبود</label>
+          <textarea id="tributeText" maxlength="220"
+            placeholder="باشد که هیچ کودکی از رؤیاهایش محروم نماند..."
+            required></textarea>
+
+          <button class="btn btn-primary" type="submit">
+            افزودن پیام به صفحه
+          </button>
+
+          <div class="form-note">
+            پیام فقط در همین صفحه و تا زمانی که صفحه باز است
+            نمایش داده می‌شود؛ در جایی ارسال یا ذخیره نمی‌شود.
+          </div>
+        </form>
+
+        <div class="messages" id="messages" aria-live="polite">
+          <div class="empty-message" id="emptyMessage">
+            هنوز پیامی نوشته نشده است. اولین جمله می‌تواند از تو باشد.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="section" id="sources">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <div class="eyebrow">مستندات و منابع</div>
+        <h2>روایت باید به سند تکیه کند.</h2>
+        <p>
+          برای مطالعهٔ دقیق‌تر، گزارش‌های خبری و حقوق بشری
+          مرتبط با واقعه را بررسی کن.
+        </p>
+      </div>
+
+      <div class="sources">
+
+        <a class="source-link reveal"
+           href="https://apnews.com/article/303eece386df6f76eb4e26b9f2ff3fae"
+           target="_blank" rel="noopener noreferrer">
+          <span>
+            <strong>گزارش آسوشیتدپرس</strong>
+            <small>دربارهٔ مدرسه و روند تبدیل محل به یادبود</small>
+          </span>
+          <span class="source-arrow">←</span>
+        </a>
+
+        <a class="source-link reveal"
+           href="https://www.hrw.org/news/2026/03/07/us/israel-investigate-iran-school-attack-as-a-war-crime"
+           target="_blank" rel="noopener noreferrer">
+          <span>
+            <strong>دیده‌بان حقوق بشر</strong>
+            <small>درخواست بررسی حمله و حفاظت از غیرنظامیان</small>
+          </span>
+          <span class="source-arrow">←</span>
+        </a>
+
+        <a class="source-link reveal"
+           href="https://www.amnesty.org/en/latest/news/2026/03/usa-iran-those-responsible-for-deadly-and-unlawful-us-strike-on-school-that-killed-over-100-children-must-be-held-accountable/"
+           target="_blank" rel="noopener noreferrer">
+          <span>
+            <strong>عفو بین‌الملل</strong>
+            <small>یافته‌ها و محدودیت‌های تأیید مستقل آمار</small>
+          </span>
+          <span class="source-arrow">←</span>
+        </a>
+
+        <a class="source-link reveal"
+           href="https://www.forensicarchitecture.org/investigation/airstrikes-on-minab"
+           target="_blank" rel="noopener noreferrer">
+          <span>
+            <strong>Forensic Architecture</strong>
+            <small>بازسازی دیجیتال و بررسی مکانی واقعه</small>
+          </span>
+          <span class="source-arrow">←</span>
+        </a>
+
+      </div>
+
+      <p class="sources-note">
+        این صفحه یک نسخهٔ آزمایشی و یادبود مستقل است.
+        برای انتشار رسمی، متن‌ها و آمار باید با منابع اولیه،
+        اسناد معتبر و اطلاعات تأییدشده تطبیق داده شوند.
+        درج نام یا تصویر افراد نیز باید با دقت و رعایت حریم
+        خصوصی خانواده‌ها انجام شود.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+
+    <div class="footer-top">
+      <div>
+        <div class="footer-title">یادنامهٔ میناب</div>
+        <div class="footer-note">
+          برای پاسداشت یاد دانش‌آموزان مدرسهٔ شجرهٔ طیبه
+        </div>
+      </div>
+
+      <a class="btn btn-outline" href="#home">بازگشت به بالا ↑</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="copyright">
+        یادشان گرامی؛ حق آموزش و امنیت برای همهٔ کودکان.
+      </span>
+
+      <span class="mta-credit">ساخته شده توسط M.T.A</span>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+/* منوی موبایل */
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", function () {
+  const isOpen = navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+navLinks.querySelectorAll("a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  });
+});
+
+/* نمایش آرام بخش‌ها هنگام اسکرول */
+const revealItems = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealItems.forEach(function (item) {
+    observer.observe(item);
+  });
+} else {
+  revealItems.forEach(function (item) {
+    item.classList.add("visible");
+  });
+}
+
+/* افزودن پیام یادبود؛ بدون ارسال اطلاعات به سرور */
+const tributeForm = document.getElementById("tributeForm");
+const tributeText = document.getElementById("tributeText");
+const messages = document.getElementById("messages");
+const emptyMessage = document.getElementById("emptyMessage");
+
+tributeForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const text = tributeText.value.trim();
+
+  if (!text) {
+    tributeText.focus();
+    return;
+  }
+
+  if (emptyMessage) {
+    emptyMessage.remove();
+  }
+
+  const message = document.createElement("div");
+  message.className = "message";
+  message.textContent = "«" + text + "»";
+
+  messages.prepend(message);
+  tributeText.value = "";
+});
+</script>
+
+</body>
+</html>
